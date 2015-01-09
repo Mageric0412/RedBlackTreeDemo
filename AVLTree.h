@@ -16,11 +16,11 @@ public:
 	CBTNode<T>* Delete(const T &data);
 };
 
+//ÓÒÐýµ¥´Î
 template<typename T>
-inline CBTNode<T>* CAVLTree<T>::SingleRotateWithLeft(CBTNode<T> *p)
+inline CBTNode<T>* CAVLTree<T>::SingleRotateWithRight(CBTNode<T> *p)
 {
 	CBTNode<T> *p2;
-
 	// rotate
 	p2 = p->left;
 	p->left = p2->right;
@@ -39,17 +39,17 @@ inline CBTNode<T>* CAVLTree<T>::SingleRotateWithLeft(CBTNode<T> *p)
 	return p2;  // New root
 }
 
-//×óÐýË«´Î
+//ÓÒÐýË«´Î
 template<typename T>
-inline CBTNode<T>* CAVLTree<T>::DoubleRotateWithLeft(CBTNode<T> *p)
+inline CBTNode<T>* CAVLTree<T>::DoubleRotateWithRight(CBTNode<T> *p)
 {
-	p->left = SingleRotateWithLeft(p->left);
-	return SingleRotateWithLeft(p);
+	p->left = SingleRotateWithRight(p->left);
+	return SingleRotateWithRight(p);
 }
 
 //×óÐýµ¥´Î
 template<typename T>
-inline CBTNode<T>* CAVLTree<T>::SingleRotateWithRight(CBTNode<T> *p)
+inline CBTNode<T>* CAVLTree<T>::SingleRotateWithLeft(CBTNode<T> *p)
 {
 	CBTNode<T> *p2;
 
@@ -71,12 +71,12 @@ inline CBTNode<T>* CAVLTree<T>::SingleRotateWithRight(CBTNode<T> *p)
 	return p2;  // New root
 }
 
-//ÓÒÐýË«´Î
+//×óÐýË«´Î
 template<typename T>
-inline CBTNode<T>* CAVLTree<T>::DoubleRotateWithRight(CBTNode<T> *p)
+inline CBTNode<T>* CAVLTree<T>::DoubleRotateWithLeft(CBTNode<T> *p)
 {
 	p->right = SingleRotateWithLeft(p->right);
-	return SingleRotateWithRight(p);
+	return SingleRotateWithLeft(p);
 }
 
 //²åÈë²Ù×÷
@@ -119,10 +119,10 @@ inline CBTNode<T>* CAVLTree<T>::Insert(const T &data, CBTNode<T> *p)
 		{
 			// left tree, need to do single rotation
 			if (data < p->left->data)
-				p = SingleRotateWithLeft(p);
+				p = SingleRotateWithRight(p);
 			// right tree, need to do double rotation
 			else
-				p = DoubleRotateWithLeft(p);
+				p = DoubleRotateWithRight(p);
 		}
 	}
 	// right child
@@ -136,10 +136,10 @@ inline CBTNode<T>* CAVLTree<T>::Insert(const T &data, CBTNode<T> *p)
 		{
 			// right tree, need to do single rotation
 			if (data > p->right->data)
-				p = SingleRotateWithRight(p);
+				p = SingleRotateWithLeft(p);
 			// left tree, need to do double rotation
 			else
-				p = DoubleRotateWithRight(p);
+				p = DoubleRotateWithLeft(p);
 		}
 	}
 	// else data is in the tree already, we'll do nothing!
