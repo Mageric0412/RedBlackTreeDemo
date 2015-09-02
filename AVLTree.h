@@ -16,7 +16,7 @@ public:
 	CBTNode<T>* Delete(const T &data);
 };
 
-//右旋单次
+
 template<typename T>
 inline CBTNode<T>* CAVLTree<T>::SingleRotateWithRight(CBTNode<T> *p)
 {
@@ -39,7 +39,7 @@ inline CBTNode<T>* CAVLTree<T>::SingleRotateWithRight(CBTNode<T> *p)
 	return p2;  // New root
 }
 
-//右旋双次
+
 template<typename T>
 inline CBTNode<T>* CAVLTree<T>::DoubleRotateWithRight(CBTNode<T> *p)
 {
@@ -47,7 +47,7 @@ inline CBTNode<T>* CAVLTree<T>::DoubleRotateWithRight(CBTNode<T> *p)
 	return SingleRotateWithRight(p);
 }
 
-//左旋单次
+
 template<typename T>
 inline CBTNode<T>* CAVLTree<T>::SingleRotateWithLeft(CBTNode<T> *p)
 {
@@ -71,7 +71,7 @@ inline CBTNode<T>* CAVLTree<T>::SingleRotateWithLeft(CBTNode<T> *p)
 	return p2;  // New root
 }
 
-//左旋双次
+
 template<typename T>
 inline CBTNode<T>* CAVLTree<T>::DoubleRotateWithLeft(CBTNode<T> *p)
 {
@@ -79,14 +79,14 @@ inline CBTNode<T>* CAVLTree<T>::DoubleRotateWithLeft(CBTNode<T> *p)
 	return SingleRotateWithLeft(p);
 }
 
-//插入操作
+
 template<typename T>
 inline CBTNode<T>* CAVLTree<T>::Insert(const T &data)
 {
 	return Insert(data, m_pNodeRoot);
 }
 
-//同上
+
 template<typename T>
 inline CBTNode<T>* CAVLTree<T>::Insert(const T &data, CBTNode<T> *p)
 {
@@ -147,7 +147,7 @@ inline CBTNode<T>* CAVLTree<T>::Insert(const T &data, CBTNode<T> *p)
 	return p;
 }
 
-//删除操作
+
 template<typename T>
 inline CBTNode<T>* CAVLTree<T>::Delete(const T &data)
 {
